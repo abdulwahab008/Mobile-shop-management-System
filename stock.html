@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock</title>
+</head>
+<style>
+
+#product-form input {
+    display: block;
+    margin-bottom: 10px;
+    width: 200px;
+  }
+  
+  #product-form button {
+    padding: 5px 10px;
+    background-color: #1905aa;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  #stock-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #stock-table th,
+  #stock-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  #stock-table th {
+    background-color: #f2f2f2;
+  }
+  
+  #stock-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #1905aa;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0d038f;
+  }
+  
+  .back button{
+   float:right;
+  }
+  
+  
+  .back button a {
+    color: #1905aa;
+    text-decoration: none;
+    
+
+  }
+  
+  .back button a:hover {
+    text-decoration: underline;
+  }
+  
+
+</style>
+
+
+
+
+
+<h2>Stock Management System</h2>
+<div class="back"> 
+    <button onclick="goBack()">Back to Dashboard</button>
+  </div>
+  <br>
+
+<form id="product-form">
+    <input type="text" id="product-name" placeholder="Product Name" required>
+    <input type="number" id="product-quantity" placeholder="Enter Quantity" required>
+    <input type="text" id="product-category" placeholder="Category" required>
+    <input type="number" id="product-price" placeholder="Price" required>
+    <input type="text" id="supplier-information" placeholder="Supplier Information" required>
+    <button type="submit">Add Product</button>
+  </form>
+  <br>
+ 
+  <div id="stock-module">
+
+    <table id="stock-table">
+      <thead>
+        <tr>
+            <th>Date</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Supplier Information</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+      </tbody>
+    </table>
+  </div>
+ 
+  
+<script>
+
+document.getElementById("product-form").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    addProductToTable(); 
+    clearFormFields(); 
+  });
+  
+
+  function addProductToTable() {
+    var productName = document.getElementById("product-name").value;
+    var quantity = document.getElementById("product-quantity").value;
+    var category = document.getElementById("product-category").value;
+    var price = document.getElementById("product-price").value;
+    var supplierInfo = document.getElementById("supplier-information").value;
+    var date = new Date().toLocaleDateString();
+    
+    var table = document.getElementById("stock-table").getElementsByTagName("tbody")[0];
+    var newRow = table.insertRow(table.rows.length);
+
+    var cell1 = newRow.insertCell(0);
+    cell1.innerHTML = date;
+    var cell2 = newRow.insertCell(1);
+    cell2.innerHTML = productName;
+    
+    var cell3 = newRow.insertCell(2);
+    cell3.innerHTML = quantity;
+    
+    var cell4 = newRow.insertCell(3);
+    cell4.innerHTML = category;
+    
+    var cell5 = newRow.insertCell(4);
+    cell5.innerHTML = price;
+    
+    var cell6 = newRow.insertCell(5);
+    cell6.innerHTML = supplierInfo;
+    
+ 
+    
+    
+  }
+  
+ 
+  function clearFormFields() {
+    document.getElementById("product-name").value = "";
+    document.getElementById("product-description").value = "";
+    document.getElementById("product-category").value = "";
+    document.getElementById("product-price").value = "";
+    document.getElementById("supplier-information").value = "";
+  }
+  function goBack() {
+    window.history.back();
+  }
+  
+    </script>  
+  </html>

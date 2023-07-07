@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #04011a;
+    }
+    
+    .container {
+      margin-top: 100px;
+      max-width: 500px;
+      margin-left: 60px;
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-left: 30%;
+    }
+    
+    .container h2 {
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+    
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="username"],
+    .form-group input[type="number"]
+     {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #1905aa;
+    }
+    
+    .form-group input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color:#1905aa;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    .form-group input[type="submit"]:hover {
+      background-color: #1b8791;
+    }
+    
+    .forgot-password p {
+      display: inline;
+      margin-top: 10px;
+      font-style: normal;
+      font-variant: #0a808b;
+      
+     
+
+      
+    }
+   
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Signup</h2>
+    <form action="signup.php" method="POST">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="Username">Username</label>
+        <input type="Username" id="Username" name="Username" required>
+      </div>
+      <div class="form-group">
+        <label for="tel">phone no.</label>
+        <input type="number" id="tel" name="tel" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Signup">
+      </div>
+      <div class="forgot-password">
+        
+        <p><a href="./login.html">Already Have an Account?</a></p>
+      </div>
+    
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile Shop Loan Application</title>
+  <style>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      h1 {
+        text-align: center;
+      }
+      
+      .loan-module {
+        display: none;
+        margin-bottom: 20px;
+      }
+      
+      .loan-module h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      
+      form label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+      }
+      
+      form input[type="text"],
+      form input[type="number"],
+      form input[type="date"],
+      form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      form input[type="submit"] {
+        width: auto;
+        padding: 10px 20px;
+        background-color: #2008f6;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .loan-buttons {
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      .loan-buttons button {
+        margin-right: 10px;
+        padding: 10px 20px;
+        background-color: #2409f4;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      #partialAmountField {
+        display: none;
+      }
+      
+      #remainingAmount {
+        font-weight: bold;
+      }
+      .back button {
+        padding: 10px 20px;
+        background-color:#1905aa;
+        margin-top:10px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      
+     .back button:hover {
+        background-color: #444;
+      }
+      
+      
+  </style>
+
+ 
+ 
+  
+  <body>
+    <div class="container">
+      <h1>Loan Application</h1>
+      <div class="loan-module" id="giveLoanModule">
+        <h2>Give Loan</h2>
+        <form action="give_loan.php" method="POST">
+          <label for="borrowerName">Borrower Name:</label>
+          <input type="text" id="borrowerName" name="borrowerName" required>
+          
+          <label for="loanAmount">Loan Amount:</label>
+          <input type="number" id="loanAmount" name="loanAmount" required>
+          
+          <label for="giveLoanDate">Date:</label>
+          <input type="date" id="giveLoanDate" name="giveLoanDate" required>
+          
+        
+        </form>
+      </div>
+      <div class="loan-module" id="takeBackLoanModule">
+        <h2>Take Back Loan</h2>
+        <form action="take_back_loan.php" method="POST">
+          <label for="borrowerName">Borrower Name:</label>
+          <input type="text" id="borrowerName" name="borrowerName" required>
+          
+          <label for="loanAmount">Loan Amount:</label>
+          <input type="number" id="loanAmount" name="loanAmount" required>
+          
+          <label for="takeBackType">Loan Return Type:</label>
+          <select id="takeBackType" name="takeBackType" onchange="togglePartialAmountField()">
+            <option value="full">Full Loan</option>
+            <option value="partial">Partial Loan</option>
+          </select>
+          
+          <div id="partialAmountField" style="display: none;">
+            <label for="partialAmount">Amount You Give Back:</label>
+            <input type="number" id="partialAmount" name="partialAmount" oninput="calculateRemainingAmount()">
+          </div>
+          
+          <label for="remainingAmount">Remaining Amount:</label>
+          <input type="number" id="remainingAmount" name="remainingAmount" readonly>
+          
+          <label for="takeBackDate">Date:</label>
+          <input type="date" id="takeBackDate" name="takeBackDate" required>
+          
+       
+        </form>
+      </div>
+      <div class="loan-buttons">
+        <button onclick="showGiveLoanModule()">Give Loan</button>
+        <button onclick="showTakeBackLoanModule()">Take Back Loan</button>
+      </div>
+    </div>
+    <div class="back">
+        <button onclick="goBack()">Back to Dashboard</button>
+      </div>
+  
+    <script>
+      function showGiveLoanModule() {
+        document.getElementById("giveLoanModule").style.display = "block";
+        document.getElementById("takeBackLoanModule").style.display = "none";
+      }
+  
+      function showTakeBackLoanModule() {
+        document.getElementById("giveLoanModule").style.display = "none";
+        document.getElementById("takeBackLoanModule").style.display = "block";
+      }
+      
+      function togglePartialAmountField() {
+        var takeBackType = document.getElementById("takeBackType").value;
+        var partialAmountField = document.getElementById("partialAmountField");
+        
+        if (takeBackType === "partial") {
+          partialAmountField.style.display = "block";
+        } else {
+          partialAmountField.style.display = "none";
+        }
+      }
+      
+      function calculateRemainingAmount() {
+        var loanAmount = parseFloat(document.getElementById("loanAmount").value);
+        var partialAmount = parseFloat(document.getElementById("partialAmount").value);
+        var remainingAmountField = document.getElementById("remainingAmount");
+        
+        if (!isNaN(loanAmount) && !isNaN(partialAmount)) {
+          var remainingAmount = loanAmount - partialAmount;
+          remainingAmountField.value = remainingAmount.toFixed(2);
+        } else {
+          remainingAmountField.value = "";
+        }
+      }
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+  </html>
+  

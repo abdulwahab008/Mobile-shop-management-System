@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        color: #333;
+      }
+   
+    
+    h1 {
+        margin-bottom: 20px;
+        color: #1905aa;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="number"] {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="password"]:focus,
+      input[type="number"]:focus {
+        outline: none;
+        border-color: #1905aa;
+      }
+      
+      button {
+        padding: 10px 20px;
+        background-color: #1905aa;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #0d038f;
+      }
+      
+      .back-button {
+        margin-top: 20px;
+      }
+      
+      .back-button a {
+        color: #1905aa;
+        text-decoration: none;
+      }
+      
+      .back-button a:hover {
+        text-decoration: underline;
+      }
+    form{
+        text-align: center;
+        
+       
+    }
+  </style>
+</head>
+<body>
+    <form>
+  <h1>Settings</h1>
+  
+  <form>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="change your username">
+    
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+    <label for="tel">phone no.</label>
+    <input type="number" id="tel" name="tel" placeholder="Enter The Phone Number"><br>
+    
+    <label for="password">Change Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter new password">
+    
+    <label for="confirm-password">Confirm Password</label>
+    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password"><br>
+    
+    <button type="submit">Save Changes</button>
+  </form>
+ <div class="back"> 
+  <button onclick="goBack()">Back to Dashboard</button>
+</div>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
